@@ -1,3 +1,23 @@
+
+//
+WalletAppKit kit = new WalletAppKit(params, new File("."), "baeldungkit") {
+    @Override
+    protected void onSetupCompleted() {
+        logger.info("Wallet created and loaded successfully.");
+        logger.info("Receive address: " + wallet().currentReceiveAddress());
+        logger.info("Seed Phrase: " + wallet().getKeyChainSeed());
+        logger.info("Balance: " + wallet().getBalance().toFriendlyString());
+        logger.info("Public Key: " + wallet().findKeyFromAddress(wallet().currentReceiveAddress())
+          .getPublicKeyAsHex());
+        logger.info("Private Key: " + wallet().findKeyFromAddress(wallet().currentReceiveAddress())
+          .getPrivateKeyAsHex());
+        wallet().encrypt("password");
+    }
+};
+kit.startAsync();
+kit.awaitRunning();
+kit.setAutoSave(true);;
+
 // createWallet() 
 void createWallet() throws IOException {
     Wallet wallet = Wallet.createDeterministic(params, Script.ScriptType.P2PKH);
