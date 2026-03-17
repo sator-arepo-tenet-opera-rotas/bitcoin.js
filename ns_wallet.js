@@ -1,9 +1,17 @@
+// createWallet() 
 void createWallet() throws IOException {
     Wallet wallet = Wallet.createDeterministic(params, Script.ScriptType.P2PKH);
     File walletFile = new File("baeldung.dat");
     wallet.saveToFile(walletFile);
 }
 
+//loadUsingSeed(String seedWord) throws UnreadableWalletException
+Wallet loadUsingSeed(String seedWord) throws UnreadableWalletException {
+    DeterministicSeed seed = new DeterministicSeed(seedWord, null, "", Utils.currentTimeSeconds());
+    return Wallet.fromSeed(params, seed);
+}
+
+// Wallet loadWallet() throws IOException, UnreadableWalletException
 Wallet loadWallet() throws IOException, UnreadableWalletException {
     File walletFile = new File("baeldung.dat");
     Wallet wallet = Wallet.loadFromFile(walletFile);
