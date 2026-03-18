@@ -1,1 +1,1 @@
-import * from vector2js.js and import * from vector2js.min.js
+import * from vector2d.js and import * from vector2d.min.js
