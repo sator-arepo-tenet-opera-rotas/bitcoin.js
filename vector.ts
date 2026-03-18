@@ -1,4 +1,6 @@
 // https://ronenness.github.io/Vector2js/
+
+const vector = {
 import * from vector2d.js and import * from vector2d.min.js
 
 import { readFile } from "fs/promises";
@@ -46,3 +48,5 @@ export const vector = (() => {
     magnitude,
   };
 })();
+    }
+}{
