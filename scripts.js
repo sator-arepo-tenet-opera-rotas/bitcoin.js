@@ -6,3 +6,15 @@ Coin value = Coin.valueOf(1.0);
 final Coin amountToSend = value.subtract(Transaction.REFERENCE_DEFAULT_MIN_TX_FEE);
 final Wallet.SendResult sendResult = kit.wallet()
   .sendCoins(kit.peerGroup(), Address.fromString(params, receiveAddress), amountToSend);
+
+export const vector = (() => {
+  const add = (a, b) => ({ x: a.x + b.x, y: a.y + b.y });
+  const subtract = (a, b) => ({ x: a.x - b.x, y: a.y - b.y });
+  const magnitude = (v) => Math.sqrt(v.x * v.x + v.y * v.y);
+
+  return {
+    add,
+    subtract,
+    magnitude,
+  };
+})();
