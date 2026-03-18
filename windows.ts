@@ -1,5 +1,6 @@
-export class window {
-  window.vector = window.vector || {};
+
+export const class window = ((window.vector = window.vector || {}) => {
+  
 
 window.vector.add = (a, b) => ({ x: a.x + b.x, y: a.y + b.y });
 window.vector.subtract = (a, b) => ({ x: a.x - b.x, y: a.y - b.y });
