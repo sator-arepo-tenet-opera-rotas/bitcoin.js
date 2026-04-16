@@ -16,6 +16,15 @@ Expected output:
 [ STARTING] INFO node.set.js.Kit - Balance: 0
 
 
+ The aforementioned optimization will attempt to infer static for closures that fulfill the following (slightly esoteric) conditions. The closure must not:
+
+    use $this. That's the obvious case.
+    use $$var, given $var could refer to 'this'.
+    use Foo::bar(), given this could be a hidden instance call to a (grand-)parent method.
+    use $f(), for the same reason as 3.
+    use call_user_func(), for the same reason as 3.
+    declare another (uninferable) non-static closure, where $this flows from parent to child.
+    use require, include or eval, given the called code might do any of the above.
 
 
 
